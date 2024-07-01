@@ -42,7 +42,7 @@ class batch_crowd_nav():
         self.num = num
         self.t = self.t_fin/self.num
         self.num_batch = num_batch
-        self.ellite_num_const = 80
+        self.ellite_num_const = 15
         self.ellite_num = 20
 
         self.num_obs_1 = num_obs_1

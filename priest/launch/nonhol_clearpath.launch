@@ -7,7 +7,8 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
-  <arg name="world_name" default="$(find priest)/worlds/corridor_3.world" />
+  <!-- <arg name="world_name" default="/home/laksh/wheelchair-camera-lidar/workspace/src/wheelchair_simulation/worlds/hospital.world" /> -->
+  <arg name="world_name" default="$(find priest)/worlds/corridor_4.world" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
   <arg name="paused" value="$(arg paused)"/>
@@ -25,10 +26,12 @@
   <arg name="joystick" default="false" />
 
   <!-- Spawn Jackal -->
+  <!-- <rosparam file="$(find priest)/config/gazebo_ros_control_params.yaml" command="load"/> -->
+
   <include file="$(find jackal_gazebo)/launch/spawn_jackal.launch">
    <arg name="x" value="1.0" />
     <arg name="y" value="2" />
-    <arg name="z" value="1.0" />
+    <arg name="z" value="0.0" />
     <arg name="yaw" value="1.57" />
     <arg name="config" value="$(arg config)" />
     <arg name="joystick" value="$(arg joystick)" />
@@ -59,7 +62,7 @@
   </node>
 
   
-  <node name="jackal_tf" pkg="priest" type="tf_transform.py" />
+  <!-- <node name="jackal_tf" pkg="priest" type="tf_transform.py" /> -->
 
 
   <arg name="obstacle_1" default="$(find priest)/urdf/cylinder_move_1.urdf" />
@@ -196,38 +199,40 @@
   args="-urdf -x $(arg x_10) -y $(arg y_10) -z $(arg z_10) -R $(arg roll_10) -P $(arg pitch_10) -Y $(arg yaw_10) -model $(arg obs_10) -param robot_description_10"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_1_trans" args="0.0 0 0.5 0 0 0 box_1_base_footprint box_1 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_1_odom_trans" args="0.0 0 0 0 0 0 world obs_1/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_1_odom_trans" args="0.0 0 0 0 0 0 map obs_1/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_2_trans" args="0.0 0 0.5 0 0 0 box_2_base_footprint box_2 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_2_odom_trans" args="0.0 0 0 0 0 0 world obs_2/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_2_odom_trans" args="0.0 0 0 0 0 0 map obs_2/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_3_trans" args="0.0 0 0.5 0 0 0 box_3_base_footprint box_3 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_3_odom_trans" args="0.0 0 0 0 0 0 world obs_3/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_3_odom_trans" args="0.0 0 0 0 0 0 map obs_3/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_4_trans" args="0.0 0 0.5 0 0 0 box_4_base_footprint box_4 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_4_odom_trans" args="0.0 0 0 0 0 0 world obs_4/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_4_odom_trans" args="0.0 0 0 0 0 0 map obs_4/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_5_trans" args="0.0 0 0.5 0 0 0 box_5_base_footprint box_5 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_5_odom_trans" args="0.0 0 0 0 0 0 world obs_5/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_5_odom_trans" args="0.0 0 0 0 0 0 map obs_5/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_6_trans" args="0.0 0 0.5 0 0 0 box_6_base_footprint box_6 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_6_odom_trans" args="0.0 0 0 0 0 0 world obs_6/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_6_odom_trans" args="0.0 0 0 0 0 0 map obs_6/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_7_trans" args="0.0 0 0.5 0 0 0 box_7_base_footprint box_7 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_7_odom_trans" args="0.0 0 0 0 0 0 world obs_7/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_7_odom_trans" args="0.0 0 0 0 0 0 map obs_7/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_8_trans" args="0.0 0 0.5 0 0 0 box_8_base_footprint box_8 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_8_odom_trans" args="0.0 0 0 0 0 0 world obs_8/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_8_odom_trans" args="0.0 0 0 0 0 0 map obs_8/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_9_trans" args="0.0 0 0.5 0 0 0 box_9_base_footprint box_9 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_9_odom_trans" args="0.0 0 0 0 0 0 world obs_9/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_9_odom_trans" args="0.0 0 0 0 0 0 map obs_9/odom 100"/>
 
   <node pkg="tf" type="static_transform_publisher" name="obs_10_trans" args="0.0 0 0.5 0 0 0 box_10_base_footprint box_10 100"/>
-  <node pkg="tf" type="static_transform_publisher" name="obs_10_odom_trans" args="0.0 0 0 0 0 0 world obs_10/odom 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_10_odom_trans" args="0.0 0 0 0 0 0 map obs_10/odom 100"/>
 
-  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find priest)/config/dynamic_env.rviz">
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_jackal_odom" args="0.0 0 0 0 0 0 world odom 100"/> -->
+
+  <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find priest)/config/dynamic_env.rviz">
     <param name="fixed_frame" value="/map"/>
-  </node>
+  </node> -->
       
 </launch>
 
